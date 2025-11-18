@@ -2,6 +2,12 @@
 
 An Obsidian plugin that allows you to quickly create a base from folder context menu with automatic folder and markdown file filters.
 
+## Demo
+
+![Demo](demo.mp4)
+
+*Right-click on any folder to instantly create a filtered base view*
+
 ## Features
 
 - Right-click on any folder in the file explorer to create a base
