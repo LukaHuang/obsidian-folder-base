@@ -1,0 +1,22 @@
+# npm
+node_modules
+package-lock.json
+
+# build
+main.js
+*.js.map
+
+# IDE
+.vscode
+.idea
+*.iml
+
+# macOS
+.DS_Store
+
+# test vaults
+test-vault
+
+# test coverage
+coverage
+*.lcov
