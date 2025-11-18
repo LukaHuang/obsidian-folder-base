@@ -3,7 +3,7 @@
   "name": "Folder Base Creator",
   "version": "1.0.0",
   "minAppVersion": "0.15.0",
-  "description": "Quickly create a base from folder context menu with automatic folder and markdown file filters",
+  "description": "Quickly create a base from folder context menu with automatic folder and markdown file filters.",
   "author": "Luka",
   "authorUrl": "",
   "isDesktopOnly": false
