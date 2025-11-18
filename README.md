@@ -4,7 +4,7 @@ An Obsidian plugin that allows you to quickly create a base from folder context 
 
 ## Demo
 
-![Demo](demo.mp4)
+![Demo](demo.gif)
 
 *Right-click on any folder to instantly create a filtered base view*
 
