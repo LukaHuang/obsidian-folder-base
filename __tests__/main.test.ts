@@ -8,7 +8,9 @@ const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 // Mock Obsidian API - use TFolder from mock
 class MockTFolder extends TFolder {
   constructor(path: string, name: string) {
-    super(path, name);
+    super();
+    this.path = path;
+    this.name = name;
   }
 }
 
@@ -232,10 +234,21 @@ describe('FolderBaseCreatorPlugin', () => {
     it('should add menu item for folders', async () => {
       await plugin.onload();
 
-      const mockMenu = {
+      interface MockMenuItem {
+        setTitle: jest.Mock;
+        setIcon: jest.Mock;
+        onClick: jest.Mock;
+      }
+
+      interface MockMenuType {
+        items: MockMenuItem[];
+        addItem: jest.Mock;
+      }
+
+      const mockMenu: MockMenuType = {
         items: [],
-        addItem: jest.fn(function(callback: any) {
-          const item = {
+        addItem: jest.fn(function(this: MockMenuType, callback: (item: MockMenuItem) => void) {
+          const item: MockMenuItem = {
             setTitle: jest.fn().mockReturnThis(),
             setIcon: jest.fn().mockReturnThis(),
             onClick: jest.fn().mockReturnThis(),
@@ -279,12 +292,18 @@ describe('FolderBaseCreatorPlugin', () => {
       const createSpy = jest.spyOn(plugin, 'createBaseForFolder');
       const folder = new MockTFolder('test/folder', 'folder');
 
+      interface MockMenuItem {
+        setTitle: jest.Mock;
+        setIcon: jest.Mock;
+        onClick: jest.Mock;
+      }
+
       const mockMenu = {
-        addItem: jest.fn((callback: any) => {
-          const item = {
+        addItem: jest.fn((callback: (item: MockMenuItem) => void) => {
+          const item: MockMenuItem = {
             setTitle: jest.fn().mockReturnThis(),
             setIcon: jest.fn().mockReturnThis(),
-            onClick: jest.fn((clickCallback: any) => {
+            onClick: jest.fn((clickCallback: () => void) => {
               clickCallback();
               return item;
             }),
